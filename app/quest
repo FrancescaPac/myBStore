@@ -1,0 +1,34 @@
+
+In primis, creiamo un app. 
+Dobbiamo creare un APK firmato tramite un keystore.
+Generiamo il keystore tramite command-line.
+Poi basta collegarsi al sito web "http...." per creare,pagando un fee una tantum, un account Merchant.
+Una volta loggati nell'account, si compilano i campi obbligatori per la sottoscrizione,ovvero: ....
+Una volta conclusa la compilazione del form, si conferma l'invio e si attende la valutazione dell'app e la sua eventuale pubblicazione sul Google Play Store.
+
+
+
+Android mette a disposizione due principali strumenti per testare l'app durante la fase di sviluppo:
+1) Android debugger: si mettono dei breakpoint, ovvero degli "stop" in corrispondenza delle righe di codice di cui vogliamo testare il comportamento e poi entrando nella modalità 'Debug'
+si può verificare che cosa succede all'applicazione istruzione per istruzione.
+Per es, nell'app BookStore ho inserito un breakpoint alla riga n.56 della classe PersistenceManager per verificare la correttezza dell'algoritmo generatore dei nuovi id utente e con l'opzione 'Evaluate' ho verificato il valore contenuto nella variabile 'maxId' istruzione per istruzione.
+2) Logcat, altro strumento utile a monitorare l’esecuzione della nostra applicazione. Ogni volta che clicchiamo sul pulsante 'Run' la finestra di Logcat ci mostra
+ una serie di istruzioni. Logcat può aiutarci a valutare il contenuto di una variabile in un determinato momento del programma
+Nel caso del progetto BookStore, ho inserito l'istruzione Log.d(TAG,message),dove 'd' sta appunto per debug,che andrà a stampare nella finestra di logcat. I parametri sono entrambi String.
+TAG deve essere una stringa 
+
+(descrivere i vari tipi di log e anche in generale come si usa il debugger,passo per passo)
+
+
+Ho un errore di compilazione, vado nel logcat per verificare la riga di codice che ha generato l errore-> metto un breakpoint li, lancio il debugger, l app si stoppa li e a quel punto verifico lo stato delle variabili in memoria, e attraverso Step Over e Step Into verifico riga per riga l esecuzione del programma.
+Una volta valutata la causa dell errore, è possibile fixarla.
+
+
+
+Il GDPR è una normativa della UE: essa costituisce l'iniziativa più significativa sulla protezione dei dati degli ultimi 20 anni.
+La finalità è volta alla protezione delle "persone fisiche in merito al trattamento dei dati personali e alla libera circolazione di tali dati".
+Nel rispetto del principio di accountability, le operazioni che implicano la gestione dei dati sensibili devono essere registrate.
+Per esempio, se con un form sto raccogliendo dei dati sensibili (come nome,cognome, email etc..) devo, prima di salvarli nel mio strato dati, registro in un file di log o in una tabella di un DB a parte (nel primo caso proteggendo il file con specifici permessi, nel secondo consentendo esclusivamente operazioni di 'INSERT'  e non di 'UPDATE' o 'DELETE'
+) tali dati, l'indirizzo IP, il timestamp e il consenso al trattamento (per es con una variabile booleana).
+Dopodichè, salvo i dati sensibili raccolti nel mio strato dati di modo che mi resituisca l'esito dell'operazione e un indentificativo univoco della stessa (per es l'id del record della tabella del mio DB).
+Infine, salvo l'esito dell'operazione e l'id univoco nel file di log/tabella del DB creata inizialmente.
